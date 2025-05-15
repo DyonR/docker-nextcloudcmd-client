@@ -29,7 +29,7 @@ EOF
 chown $RUN_UID:$RUN_GID $netrc_file
 chmod 600 $netrc_file
 
-echo "[INFO] Chaning ownership of all files and directories in /ocdata and /opt/Nextcloud/log to $RUN_UID:$RUN_GID" | ts '%Y-%m-%d %H:%M:%.S'
-chown -R $RUN_UID:$RUN_GID /ocdata /opt/Nextcloud/log
+echo "[INFO] Chaning ownership of all files and directories in /nextclouddata and /opt/Nextcloud/log to $RUN_UID:$RUN_GID" | ts '%Y-%m-%d %H:%M:%.S'
+chown -R $RUN_UID:$RUN_GID /nextclouddata /opt/Nextcloud/log
 
 exec $@
