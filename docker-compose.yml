@@ -1,0 +1,19 @@
+occlient:
+  image: dyonr/nextcloudcmd-client
+  volumes:
+    - ${PWD}/mydata:/nextclouddata
+  environment:
+    - NEXTCLOUD_USER=myuser
+    - NEXTCLOUD_PASS=mypass
+    - NEXTCLOUD_PROTO=https
+    - NEXTCLOUD_SERVER=myocserver.com
+    - NEXTCLOUD_URLPATH=/
+    - NEXTCLOUD_WEBDAV=remote.php/webdav
+    - NEXTCLOUD_FILEPATH=/
+    - TRUST_SELFSIGN=0
+    - SYNC_HIDDEN=0
+    - SILENCE_OUTPUT=1
+    - RUN_INTERVAL=30
+    - RUN_UID=99
+    - RUN_GID=100
+
