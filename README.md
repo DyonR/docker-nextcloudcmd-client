@@ -2,21 +2,27 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/dyonr/nextcloudcmd-client)](https://hub.docker.com/r/dyonr/nextcloudcmd-client)
 [![Docker Image Size (tag)](https://img.shields.io/docker/image-size/dyonr/nextcloudcmd-client/latest)](https://hub.docker.com/r/dyonr/nextcloudcmd-client)  
 
-Dockerized Nextcloud command line client (nextcloudcmd) to sync from any supported Nextcloud(-like) environment.  
-This container _should_ work with any Nextcloud, TransIP STACK or any other Nextcloud(-like) based storage endpoint.
+A Dockerized Nextcloud command-line client (`nextcloudcmd`) to sync from any supported Nextcloud(-like) environment.  
+This container **should** work with:  
+- Any standard Nextcloud server
+- TransIP STACK
+- Other compatible WebDAV-based Nextcloud-like storage platforms  
 
+> ⚠️ This project is **only** tested with **TransIP's STACK**.
+  
 This project is a continuation of [docker-nextcloudcmd-client](https://github.com/DyonR/docker-nextcloudcmd-client) to use Nextcloud instead of ownCloud.  
-This project is **only** tested with **TransIP's STACK**.
 
-The main use of this Docker is to be able to synchronise with a Nextcloud(-like) environment that is not part of the server that you run this Docker on.
-Example use case of this container is that you have a remote (Nextcloud-like) cloud storage somewhere, that you wish to have continuously synced with your server that runs this Docker. Like the Nextcloud of a friend or a paid Nextcloud(-like) environment like TransIP STACK.
+  
+## Use Case
+This container is designed to continuously synchronize files from a remote Nextcloud(-like) storage to your local machine via Docker.  
+Example use case: You have a remote cloud account (e.g., your friend's Nextcloud or a TransIP STACK instance), and you want that data synced to your server via Docker.
 
 ## Docker Features
-* Base: Debian 12
-* Size: <100MB
-* Ability to only sync only one (sub)folder
-* Created with [Unraid](https://unraid.net/) in mind
 
+- **Base**: Debian 12
+- **Image Size**: <100MB
+- **Folder-specific sync support**
+- **Built with Unraid compatibility in mind**
 
 # Run container from Docker registry
 The container is available from the Docker registry and this is the simplest way to get it.
@@ -59,10 +65,18 @@ $ docker run -d \
 ## Ports
 This Docker container exposes no ports, has no UI and therefore does not need to have any ports exposed.
 
-# Issues
-If you are having issues with this container please submit an issue on GitHub.
-Please provide logs, Docker version and other information that can simplify reproducing the issue.
-If possible, always use the most up to date version of Docker, you operating system, kernel and the container itself. Support is always a best-effort basis.
+## Issues
+If you're experiencing problems:
+
+1. Check the logs at `/opt/Nextcloud/log/latest.log`
+2. Open a GitHub issue
+3. Include:
+   - Docker version
+   - OS and kernel version
+   - Relevant logs
+   - Environment variables used (obfuscate sensitive info)
+
+> ❗Please use the latest versions of Docker and this container whenever possible. Support is provided on a best-effort basis.
 
 ## Disclaimer
 I am not responsible for any data loss due wrong configurations.
