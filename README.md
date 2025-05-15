@@ -20,7 +20,7 @@ Example use case: You have a remote cloud account (e.g., your friend's Nextcloud
 ## Docker Features
 
 - **Base**: Debian 12
-- **Image Size**: <100MB
+- **Image Size**: <150MB
 - **Folder-specific sync support**
 - **Built with Unraid compatibility in mind**
 
