@@ -9,12 +9,12 @@ This project is a continuation of [docker-nextcloudcmd-client](https://github.co
 This project is **only** tested with **TransIP's STACK**.
 
 The main use of this Docker is to be able to synchronise with a Nextcloud(-like) environment that is not part of the server that you run this Docker on.
-Example use case of this container is that you have a remote (Nextcloud-like) cloud storage somewhere, that you wish to have continously synced with your server that runs this Docker. Like the Nextcloud of a friend or a paid Nextcloud(-like) environment like TransIP STACK.
+Example use case of this container is that you have a remote (Nextcloud-like) cloud storage somewhere, that you wish to have continuously synced with your server that runs this Docker. Like the Nextcloud of a friend or a paid Nextcloud(-like) environment like TransIP STACK.
 
 ## Docker Features
-* Base: Debian 10
+* Base: Debian 12
 * Size: <100MB
-* **Ability to only sync only one (sub)folder**
+* Ability to only sync only one (sub)folder
 * Created with [Unraid](https://unraid.net/) in mind
 
 
@@ -49,7 +49,7 @@ $ docker run -d \
 |`SILENCE_OUTPUT`| No | Set to `0` to get more verbose output |`SILENCE_OUTPUT=1`|`1`|
 |`RUN_INTERVAL`| No | Interval in seconds at which the client will run and check for changes |`RUN_INTERVAL=60`|`30`|
 |`RUN_UID`| No | UID of the occlient user and the /nextclouddata folder/files |`RUN_UID=99`|`99`|
-|`RUN_GID`| No | GID of the occlient user and the /nextclouddata folder/files |`RUN_UID=100`|`100`|
+|`RUN_GID`| No | GID of the occlient user and the /nextclouddata folder/files |`RUN_GID=100`|`100`|
 
 ## Volumes
 | Volume | Required | Function | Example |
@@ -57,7 +57,7 @@ $ docker run -d \
 | `nextclouddata` | Yes | Nextcloud sync location | `/your/nextclouddata/path/:/nextclouddata`|
 
 ## Ports
-This Docker container exposes no ports, has no UI and therfore does not need to have any ports exposed.
+This Docker container exposes no ports, has no UI and therefore does not need to have any ports exposed.
 
 # Issues
 If you are having issues with this container please submit an issue on GitHub.
