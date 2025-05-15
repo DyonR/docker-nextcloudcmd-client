@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Check if the PGID exists, if not create the group with the name 'nextcloudclient'
-grep $"${RUN_GID}:" /etc/group > /dev/null 2>&1
+getent group "$RUN_GID" > /dev/null 2>&1
 if [ $? -eq 0 ]; then
 	echo "[INFO] A group with PGID $RUN_GID already exists in /etc/group, nothing to do." | ts '%Y-%m-%d %H:%M:%.S'
 else
@@ -10,7 +10,7 @@ else
 fi
 
 # Check if the PUID exists, if not create the user with the name 'nextcloudclient', with the correct group
-grep $"${RUN_UID}:" /etc/passwd > /dev/null 2>&1
+getent passwd "$RUN_UID" > /dev/null 2>&1
 if [ $? -eq 0 ]; then
 	echo "[INFO] An user with PUID $RUN_UID already exists in /etc/passwd, nothing to do." | ts '%Y-%m-%d %H:%M:%.S'
 else
@@ -29,7 +29,7 @@ EOF
 chown $RUN_UID:$RUN_GID $netrc_file
 chmod 600 $netrc_file
 
-echo "[INFO] Chaning ownership of all files and directories in /nextclouddata and /opt/Nextcloud/log to $RUN_UID:$RUN_GID" | ts '%Y-%m-%d %H:%M:%.S'
+echo "[INFO] Changing ownership of all files and directories in /nextclouddata and /opt/Nextcloud/log to $RUN_UID:$RUN_GID" | ts '%Y-%m-%d %H:%M:%.S'
 chown -R $RUN_UID:$RUN_GID /nextclouddata /opt/Nextcloud/log
 
 exec $@
