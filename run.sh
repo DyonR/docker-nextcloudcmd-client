@@ -23,6 +23,6 @@ echo "[INFO] Running nextcloudcmd as following:" | ts '%Y-%m-%d %H:%M:%.S'
 echo "[INFO] nextcloudcmd $SELFSIGN $SYNCHIDDEN $SILENCEOUTPUT -n --non-interactive /nextclouddata $NEXTCLOUD_PROTO://$NEXTCLOUD_SERVER$NEXTCLOUD_URLPATH$NEXTCLOUD_WEBDAV$NEXTCLOUD_FILEPATH" | ts '%Y-%m-%d %H:%M:%.S'
 while true
 do 
-	su - occlient -c "nextcloudcmd $SELFSIGN $SYNCHIDDEN $SILENCEOUTPUT -n --non-interactive /nextclouddata $NEXTCLOUD_PROTO://$NEXTCLOUD_SERVER$NEXTCLOUD_URLPATH$NEXTCLOUD_WEBDAV$NEXTCLOUD_FILEPATH &> /opt/ownCloud/log/latest.log"
+	su - nextcloudclient -c "nextcloudcmd $SELFSIGN $SYNCHIDDEN $SILENCEOUTPUT -n --non-interactive /nextclouddata $NEXTCLOUD_PROTO://$NEXTCLOUD_SERVER$NEXTCLOUD_URLPATH$NEXTCLOUD_WEBDAV$NEXTCLOUD_FILEPATH &> /opt/Nextcloud/log/latest.log"
 	sleep $RUN_INTERVAL
 done

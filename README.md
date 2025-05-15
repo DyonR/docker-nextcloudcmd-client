@@ -1,14 +1,15 @@
-# docker-owncloud-client
-[![Docker Pulls](https://img.shields.io/docker/pulls/dyonr/owncloud-client)](https://hub.docker.com/r/dyonr/owncloud-client)
-[![Docker Image Size (tag)](https://img.shields.io/docker/image-size/dyonr/owncloud-client/latest)](https://hub.docker.com/r/dyonr/owncloud-client)  
+# docker-nextcloudcmd-client
+[![Docker Pulls](https://img.shields.io/docker/pulls/dyonr/nextcloudcmd-client)](https://hub.docker.com/r/dyonr/nextcloudcmd-client)
+[![Docker Image Size (tag)](https://img.shields.io/docker/image-size/dyonr/nextcloudcmd-client/latest)](https://hub.docker.com/r/dyonr/nextcloudcmd-client)  
 
-Dockerized ownCloud CLI Client (owncloudcmd) to sync from any supported ownCloud or Nextcloud-like environment.  
-This container should work with any ownCloud, Nextcloud, TransIP STACK or any other ownCloud/Nextcloud based storage endpoint.
+Dockerized Nextcloud command line client (nextcloudcmd) to sync from any supported Nextcloud(-like) environment.  
+This container _should_ work with any Nextcloud, TransIP STACK or any other Nextcloud(-like) based storage endpoint.
 
-I forked the original project to be able to run TransIP's STACK in a Docker.
+This project is a continuation of [docker-nextcloudcmd-client](https://github.com/DyonR/docker-nextcloudcmd-client) to use Nextcloud instead of ownCloud.  
+This project is **only** tested with **TransIP's STACK**.
 
-The main use of this Docker is to be able to synchronise with a ownCloud or Nextcloud-like environment that is not part of the server that you run this Docker on.
-Example use case of this container is that you have a remote (ownCloud or Nextcloud) cloud storage somewhere, that you wish to have continously synced with your server that runs this Docker. Like the ownCloud/Nextcloud of a friend or a paid ownCloud/Nextcloud-like environment like TransIP STACK.
+The main use of this Docker is to be able to synchronise with a Nextcloud(-like) environment that is not part of the server that you run this Docker on.
+Example use case of this container is that you have a remote (Nextcloud-like) cloud storage somewhere, that you wish to have continously synced with your server that runs this Docker. Like the Nextcloud of a friend or a paid Nextcloud(-like) environment like TransIP STACK.
 
 ## Docker Features
 * Base: Debian 10
@@ -23,37 +24,37 @@ The container is available from the Docker registry and this is the simplest way
 To run the container use this command:
 ```
 $ docker run -d \
-             --name='owncloud-client' \
-             -v /your/ocdata/path/:/ocdata \
-             -e OC_USER=owncloud_username \
-             -e OC_PASS=owncloud_password \
-             -e OC_SERVER=myowncloud.com \
+             --name='nextcloudcmd-client' \
+             -v /your/nextclouddata/path/:/nextclouddata \
+             -e NEXTCLOUD_USER=nextcloud_username \
+             -e NEXTCLOUD_PASS=nextcloud_password \
+             -e NEXTCLOUD_SERVER=mynextcloud.com \
              --restart unless-stopped \
-             'dyonr/owncloud-client'
+             'dyonr/nextcloudcmd-client'
 ```
 
 # Environment Variables & Volumes
 ## Environment Variables
 | Variable | Required | Function | Example | Default |
 |----------|----------|----------|----------|----------|
-|`OC_USER`| Yes | Username (or email) to connect to ownCloud |`OC_USER=dyonr`||
-|`OC_PASS`| Yes | Password or App-Token for the ownCloud user |`OC_PASS=ac98df79ed7fb`||
-|`OC_SERVER`| Yes | ownCloud Environment server address, with port if it's not a default port number |`OC_SERVER=example.com:8443`||
-|`OC_PROTO`| No | Connect via http or https |`OC_PROTO=https`|`https`|
-|`OC_URLPATH`| No | Server path to the ownCloud instance (example: https://example.com:8443/owncloud/ becomes `/owncloud/`) |`OC_URLPATH=/owncloud/`| `/owncloud/`|
-|`OC_WEBDAV`| No | In case the webdav path is not `remote.php/webdav`, you can change it here |`OC_WEBDAV=remote.php/webdav`| `remote.php/webdav` |
-|`OC_FILEPATH`| No | Only sync one specific folder |`OC_FILEPATH=/Pictures/Holiday-2020`|`/`|
+|`NEXTCLOUD_USER`| Yes | Username (or email) to connect to Nextcloud |`NEXTCLOUD_USER=dyonr`||
+|`NEXTCLOUD_PASS`| Yes | Password or App-Token for the Nextcloud user |`NEXTCLOUD_PASS=ac98df79ed7fb`||
+|`NEXTCLOUD_SERVER`| Yes | Nextcloud Environment server address, with port if it's not a default port number |`NEXTCLOUD_SERVER=example.com:8443`||
+|`NEXTCLOUD_PROTO`| No | Connect via http or https |`NEXTCLOUD_PROTO=https`|`https`|
+|`NEXTCLOUD_URLPATH`| No | Server path to the Nextcloud instance (example: https://example.com:8443/Nextcloud/ becomes `/Nextcloud/`) |`NEXTCLOUD_URLPATH=/Nextcloud/`| `/Nextcloud/`|
+|`NEXTCLOUD_WEBDAV`| No | In case the webdav path is not `remote.php/webdav`, you can change it here |`NEXTCLOUD_WEBDAV=remote.php/webdav`| `remote.php/webdav` |
+|`NEXTCLOUD_FILEPATH`| No | Only sync one specific folder |`NEXTCLOUD_FILEPATH=/Pictures/Holiday-2020`|`/`|
 |`TRUST_SELFSIGN`| No | Ignore self-signed certificate errors (Set to `1` to ignore SSL errors)|`TRUST_SELFSIGN=0`|`0`|
-|`SYNC_HIDDEN`| No | Set to `1` to sync all hidden files within the specified ownCloud directory|`SYNC_HIDDEN=0`|`0`|
+|`SYNC_HIDDEN`| No | Set to `1` to sync all hidden files within the specified Nextcloud directory|`SYNC_HIDDEN=0`|`0`|
 |`SILENCE_OUTPUT`| No | Set to `0` to get more verbose output |`SILENCE_OUTPUT=1`|`1`|
 |`RUN_INTERVAL`| No | Interval in seconds at which the client will run and check for changes |`RUN_INTERVAL=60`|`30`|
-|`RUN_UID`| No | UID of the occlient user and the /ocdata folder/files |`RUN_UID=99`|`99`|
-|`RUN_GID`| No | GID of the occlient user and the /ocdata folder/files |`RUN_UID=100`|`100`|
+|`RUN_UID`| No | UID of the occlient user and the /nextclouddata folder/files |`RUN_UID=99`|`99`|
+|`RUN_GID`| No | GID of the occlient user and the /nextclouddata folder/files |`RUN_UID=100`|`100`|
 
 ## Volumes
 | Volume | Required | Function | Example |
 |----------|----------|----------|----------|
-| `ocdata` | Yes | ownCloud sync location | `/your/ocdata/path/:/ocdata`|
+| `nextclouddata` | Yes | Nextcloud sync location | `/your/nextclouddata/path/:/nextclouddata`|
 
 ## Ports
 This Docker container exposes no ports, has no UI and therfore does not need to have any ports exposed.
