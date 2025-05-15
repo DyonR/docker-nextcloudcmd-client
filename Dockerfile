@@ -45,13 +45,13 @@ WORKDIR /nextclouddata
 ENTRYPOINT ["/bin/bash","/opt/Nextcloud/docker-entrypoint.sh"]
 CMD ["/bin/bash", "/opt/Nextcloud/run.sh"]
 
-ENV OC_USER=oc_username \
-    OC_PASS=oc_passwordORtoken \
-    OC_SERVER=yourserver.com \
-    OC_PROTO=https \
-    OC_URLPATH=/ \
-    OC_WEBDAV=remote.php/webdav \
-    OC_FILEPATH=/ \
+ENV NEXTCLOUD_USER=NEXTCLOUD_username \
+    NEXTCLOUD_PASS=NEXTCLOUD_passwordORtoken \
+    NEXTCLOUD_SERVER=yourserver.com \
+    NEXTCLOUD_PROTO=https \
+    NEXTCLOUD_URLPATH=/ \
+    NEXTCLOUD_WEBDAV=remote.php/webdav \
+    NEXTCLOUD_FILEPATH=/ \
     TRUST_SELFSIGN=0 \
     SYNC_HIDDEN=0 \
     SILENCE_OUTPUT=1 \
